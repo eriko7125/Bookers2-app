@@ -1,0 +1,31 @@
+<div class="container">
+<p id = "notice"><%= notice %></p>
+
+<% if @book.errors.any? %>
+  <div id="error_explanation">
+  <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+<div class="col-xs-3">
+  <h2>User info</h2>
+  <table class="table">
+    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format:"jpeg", fallback: "no_image.jpg"%>
+    <tr>
+    <th>name</th>
+    <th><%= user.name %></th>
+    </tr>
+    <th>introduction</th>
+    <th><%= user.introduction %></th>
+  </table>
+  <div class="row">
+  <%= link_to edit_user_path(user), class: "col-xs-12 btn btn-default" do  %>
+    <i class= "glyphicon glyphicon-wrench"></i>
+  <% end %>
+</div>
